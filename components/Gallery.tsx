@@ -56,7 +56,7 @@ const Gallery: React.FC = () => {
           >
              {/* <--- CHANGE IMAGE SOURCE HERE: Large Main "Skate" Image ---> */}
              <img 
-               src="public/pic1.jpg" 
+               src="/pic1.jpg" 
                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" 
                alt="Vibe" 
                loading="lazy"
@@ -73,7 +73,7 @@ const Gallery: React.FC = () => {
             className="bg-shotz-yellow rounded-3xl border-4 border-black p-6 flex flex-col justify-between group overflow-hidden"
           >
             
-               <img src="public/mascot3.svg"></img>
+               <img src="/mascot3.svg"></img>
              
 
           </motion.div>
@@ -98,7 +98,7 @@ const Gallery: React.FC = () => {
             className="bg-shotz-black rounded-3xl   flex flex-col justify-between group overflow-hidden"
           >
             
-            <img src="public/pic2.jpg"></img>
+            <img src="/pic2.jpg"></img>
              
              <p className="font-display text-4xl text-black leading-none mt-4"></p>
           </motion.div>

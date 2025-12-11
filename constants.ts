@@ -14,7 +14,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Classic Zest',
     color: 'bg-shotz-yellow',
     textColor: 'text-shotz-black',
-    image: 'public/bottle.svg',
+    image: '/bottle.svg',
     description: ['Zesty Lemon Kick', 'Real Black Tea', 'Sweet & Sour Balance'],
     sugar: 5
   },
@@ -24,7 +24,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Sweet Vibes',
     color: 'bg-orange-300',
     textColor: 'text-shotz-black',
-    image: 'public/peach_bottle.png',
+    image: '/peach_bottle.png',
     description: ['Juicy Peach', 'Smooth Finish', 'Summer in a Bottle'],
     sugar: 5
   }

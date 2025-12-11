@@ -30,7 +30,7 @@ const About: React.FC = () => {
              {/* Bottle Image (Placeholder) */}
              <div className="w-full h-full relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
                <img 
-                 src="public/botlle1.svg"
+                 src="/botlle1.svg"
                  alt="Shotz Bottle"
                  loading="lazy"
                  className="w-full h-full object-contain"
@@ -46,7 +46,7 @@ const About: React.FC = () => {
              className="absolute -bottom-10 -right-10 w-48 md:w-64 z-20"
            >
               <img 
-                src="public/mascot3.svg" 
+                src="/mascot3.svg" 
                 alt="Mascot"
                 loading="lazy"
                 className="w-full transform -rotate-12 drop-shadow-[4px_4px_0_#000]"

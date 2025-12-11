@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
             {/* Logo - Replace src with your actual logo file path */}
             <a href="#" className="relative group block">
               <img 
-                src="public/Logo.svg" 
+                src="/Logo.svg" 
                 alt="SHOTZ" 
                 className="h-10 w-auto object-contain transition-transform group-hover:rotate-[-2deg]   height: 2.8rem;"
               />

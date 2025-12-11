@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           {/* Logo Placeholder */}
           <div className="mb-4 md:mb-8 w-[60vw] md:w-[30vw] max-w-[400px] relative z-20 mx-auto">
              <img 
-               src="public/Logo.svg" 
+               src="/Logo.svg" 
                alt="SHOTZ Logo" 
                // LCP Optimization: Load this immediately
                fetchPriority="high"
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
            w-[120px] md:w-[320px] pointer-events-none will-change-transform"
         >
           <img 
-            src="public/mascot1.svg"
+            src="/mascot1.svg"
             alt="Shotz Mascot Trademark"
             loading="eager"
             className="w-full h-full object-contain drop-shadow-[8px_8px_0_rgba(0,0,0,1)]"
