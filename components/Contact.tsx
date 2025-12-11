@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
           </a>
 
           {/* WhatsApp Button - Logo Only */}
-          <a href="https://wa.me/91884884459" className="group relative"   target="_blank">
+          <a href="https://wa.me/917012158426" className="group relative"   target="_blank">
              <div className="absolute inset-0 bg-black rounded-full translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
              <div className="relative bg-[#25D366] border-4 border-black rounded-full w-32 h-32 md:w-48 md:h-48 flex items-center justify-center hover:-translate-y-1 transition-transform">
                <MessageCircle size={64} className="fill-current text-white md:w-24 md:h-24" />
