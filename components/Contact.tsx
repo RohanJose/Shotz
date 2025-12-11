@@ -12,19 +12,17 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-4 text-center relative z-10">
         
         <div className="inline-block bg-black text-white px-6 py-2 font-display text-xl -rotate-2 mb-8 border-2 border-transparent hover:border-white transition-colors">
-           DON'T BE SHY
+           don't be shy
         </div>
         
         <h2 className="font-display text-7xl md:text-9xl text-black mb-12 leading-[0.9]">
-          HIT US UP
+          hit us up
         </h2>
 
-        <div className="flex gap-8 justify-center items-center max-w-4xl mx-auto">
+        <div className="flex gap-8 justify-center items-center max-w-4xl mx-auto mb-16">
           
           {/* Instagram Button - Logo Only */}
-          <a href="https://www.instagram.com/drinkshotz
-
-" className="group relative" target="_blank">
+          <a href="https://www.instagram.com/drinkshotz" className="group relative" target="_blank" rel="noreferrer">
             <div className="absolute inset-0 bg-black rounded-full translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
             <div className="relative bg-[#E1306C] border-4 border-black rounded-full w-32 h-32 md:w-48 md:h-48 flex items-center justify-center hover:-translate-y-1 transition-transform">
                <Instagram size={64} className="text-white md:w-24 md:h-24" />
@@ -32,7 +30,7 @@ const Contact: React.FC = () => {
           </a>
 
           {/* WhatsApp Button - Logo Only */}
-          <a href="https://wa.me/917012158426" className="group relative"   target="_blank">
+          <a href="https://wa.me/917012158426" className="group relative" target="_blank" rel="noreferrer">
              <div className="absolute inset-0 bg-black rounded-full translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
              <div className="relative bg-[#25D366] border-4 border-black rounded-full w-32 h-32 md:w-48 md:h-48 flex items-center justify-center hover:-translate-y-1 transition-transform">
                <MessageCircle size={64} className="fill-current text-white md:w-24 md:h-24" />
@@ -41,8 +39,28 @@ const Contact: React.FC = () => {
 
         </div>
 
-        <p className="font-bold text-xl mt-16 max-w-2xl mx-auto">
-        Want SHOTZ in your store? Need a restock? Hit us up — let's make it happen.        </p>
+        {/* Creative Email Section - Lowercase Vibe */}
+        <div className="mb-16 relative inline-block group cursor-pointer hover:rotate-1 transition-transform duration-300">
+           <a href="mailto:drinkshotztea@gmail.com" className="block relative">
+              {/* Heavy Shadow Layer */}
+              <div className="absolute inset-0 bg-black rounded-xl translate-x-3 translate-y-3 transition-transform group-hover:translate-x-4 group-hover:translate-y-4"></div>
+              
+              {/* Main Content Box */}
+              <div className="relative bg-white border-4 border-black px-8 py-6 md:px-16 md:py-8 rounded-xl flex flex-col items-center justify-center transition-all group-hover:-translate-y-1 group-hover:bg-shotz-lime">
+                 <span className="font-body font-bold text-sm tracking-[0.2em] text-gray-500 mb-2 group-hover:text-black">
+                   or just mail us @
+                 </span>
+                 {/* Using font-body font-black instead of font-display to allow lowercase rendering */}
+                 <span className="font-body font-black text-3xl md:text-6xl text-black leading-none border-b-4 border-transparent group-hover:border-black transition-all tracking-tighter">
+                   drinkshotztea@gmail.com
+                 </span>
+              </div>
+           </a>
+        </div>
+
+        <p className="font-bold text-xl mt-8 max-w-2xl mx-auto">
+          want shotz in your store? need a restock? hit us up — let's make it happen.
+        </p>
       </div>
     </section>
   );
