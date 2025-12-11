@@ -11,7 +11,7 @@ const StarSVG = ({ color, className }: { color: string; className?: string }) =>
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  // Slowed down parallax movement (was 150, now 80 for smoother feel)
+  // Slowed down parallax movement
   const yText = useTransform(scrollY, [0, 500], [0, 80]);
   const rotateMascot = useTransform(scrollY, [0, 500], [0, 10]);
 
@@ -25,50 +25,53 @@ const Hero: React.FC = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[50vh] h-[50vh] bg-shotz-yellow rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[60vh] h-[60vh] bg-shotz-green rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
 
-      {/* --- NEW CREATIVE STAR ELEMENTS --- */}
+      {/* --- SMOOTH ANIMATED STARS --- */}
 
-      {/* 1. Big Yellow Star (Top Left) - Rotating */}
+      {/* 1. Big Star (Top Left) - Smooth continuous spin + subtle breathing */}
       <motion.div 
-        className="absolute top-24 left-[5%] md:left-[12%] w-16 h-16 md:w-28 md:h-28 z-10 opacity-100 drop-shadow-[4px_4px_0_rgba(0,0,0,0.5)]"
+        className="absolute top-24 left-[5%] md:left-[12%] w-16 h-16 md:w-28 md:h-28 z-10 opacity-100 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)]"
         animate={{ 
-          rotate: [0, 180, 360], 
-          scale: [1, 1.1, 1] 
+          rotate: 360,
+          scale: [1, 1.15, 1] 
         }}
         transition={{ 
-          duration: 12, 
-          repeat: Infinity, 
-          ease: "linear" 
+          rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+          scale: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
         }}
       >
-        <StarSVG color="#FFF500" /> 
+        <StarSVG color="#FFFFFF" /> 
       </motion.div>
 
-      {/* 2. Green Star (Right Side) - Floating/Tilting */}
+      {/* 2. Star (Right Side) - Organic Floating + Slight Tilt */}
       <motion.div 
-        className="absolute top-[35%] right-[5%] md:right-[15%] w-20 h-20 md:w-36 md:h-36 z-10 opacity-90 drop-shadow-[4px_4px_0_rgba(0,0,0,0.5)]"
+        className="absolute top-[35%] right-[5%] md:right-[15%] w-20 h-20 md:w-36 md:h-36 z-10 opacity-90 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)]"
         animate={{ 
-          y: [0, -30, 0],
-          rotate: [0, -15, 0]
+          y: [-15, 15, -15],
+          rotate: [-5, 5, -5]
         }}
         transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
+          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+          rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" }
         }}
-      >
-        <StarSVG color="#4ADE80" />
-      </motion.div>
-
-      {/* 3. Tiny White Sparkle (Near Center Title) - Pulsing */}
-      <motion.div 
-        className="absolute top-[28%] left-[25%] md:left-[30%] w-8 h-8 md:w-12 md:h-12 z-20"
-        animate={{ scale: [1, 0.5, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 2, repeat: Infinity }}
       >
         <StarSVG color="#FFFFFF" />
       </motion.div>
 
-  
+      {/* 3. Tiny Sparkle (Near Center) - Quick Twinkle */}
+      <motion.div 
+        className="absolute top-[28%] left-[25%] md:left-[30%] w-8 h-8 md:w-12 md:h-12 z-20"
+        animate={{ 
+          scale: [0.8, 1.2, 0.8], 
+          opacity: [0.6, 1, 0.6] 
+        }}
+        transition={{ 
+          duration: 1.5, 
+          repeat: Infinity, 
+          ease: "easeInOut" 
+        }}
+      >
+        <StarSVG color="#FFFFFF" />
+      </motion.div>
 
       {/* ---------------------------------- */}
 

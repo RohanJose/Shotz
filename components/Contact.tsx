@@ -39,19 +39,19 @@ const Contact: React.FC = () => {
 
         </div>
 
-        {/* Creative Email Section - Lowercase Vibe */}
-        <div className="mb-16 relative inline-block group cursor-pointer hover:rotate-1 transition-transform duration-300">
-           <a href="mailto:drinkshotztea@gmail.com" className="block relative">
+        {/* Creative Email Section - Lowercase Vibe - OPTIMIZED FOR MOBILE */}
+        <div className="mb-16 relative inline-block group cursor-pointer hover:rotate-1 transition-transform duration-300 max-w-full">
+           <a href="mailto:drinkshotztea@gmail.com" className="block relative w-full">
               {/* Heavy Shadow Layer */}
               <div className="absolute inset-0 bg-black rounded-xl translate-x-3 translate-y-3 transition-transform group-hover:translate-x-4 group-hover:translate-y-4"></div>
               
               {/* Main Content Box */}
-              <div className="relative bg-white border-4 border-black px-8 py-6 md:px-16 md:py-8 rounded-xl flex flex-col items-center justify-center transition-all group-hover:-translate-y-1 group-hover:bg-shotz-lime">
-                 <span className="font-body font-bold text-sm tracking-[0.2em] text-gray-500 mb-2 group-hover:text-black">
+              <div className="relative bg-white border-4 border-black px-4 py-6 md:px-16 md:py-8 rounded-xl flex flex-col items-center justify-center transition-all group-hover:-translate-y-1 group-hover:bg-shotz-lime w-full">
+                 <span className="font-body font-bold text-xs md:text-sm tracking-[0.2em] text-gray-500 mb-2 group-hover:text-black">
                    or just mail us @
                  </span>
-                 {/* Using font-body font-black instead of font-display to allow lowercase rendering */}
-                 <span className="font-body font-black text-3xl md:text-6xl text-black leading-none border-b-4 border-transparent group-hover:border-black transition-all tracking-tighter">
+                 {/* Responsive font sizing and breaking to prevent overflow */}
+                 <span className="font-body font-black text-xl sm:text-3xl md:text-6xl text-black leading-none border-b-4 border-transparent group-hover:border-black transition-all tracking-tighter break-all">
                    drinkshotztea@gmail.com
                  </span>
               </div>
