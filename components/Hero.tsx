@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Ingredients from './Ingredients';
 
 // Reusable Star SVG Component with the curved "sparkle" shape
@@ -11,9 +11,28 @@ const StarSVG = ({ color, className }: { color: string; className?: string }) =>
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  // Slowed down parallax movement
-  const yText = useTransform(scrollY, [0, 500], [0, 80]);
-  const rotateMascot = useTransform(scrollY, [0, 500], [0, 10]);
+  
+  // --- PHYSICS BASED SMOOTHING ---
+  // This converts the raw scroll pixel value into a spring value.
+  // It eliminates jitter and adds a "weighty" feel to the parallax.
+  const smoothY = useSpring(scrollY, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // --- PARALLAX TRANSFORMS ---
+  
+  // Text moves down at 40% speed of scroll
+  const yText = useTransform(smoothY, [0, 500], [0, 200]);
+  
+  // Mascot rotates and moves down slightly slower than text to separate layers
+  const rotateMascot = useTransform(smoothY, [0, 500], [0, 15]);
+  const yMascot = useTransform(smoothY, [0, 500], [0, 80]);
+
+  // Background blobs move upward to create deep background effect
+  const yBlob1 = useTransform(smoothY, [0, 500], [0, -100]);
+  const yBlob2 = useTransform(smoothY, [0, 500], [0, -150]);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start pt-48 md:pt-40 overflow-hidden bg-shotz-lime transform-gpu">
@@ -21,15 +40,21 @@ const Hero: React.FC = () => {
       {/* Noise Texture Overlay */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-noise z-0 mix-blend-multiply"></div>
 
-      {/* Decorative Blobs - Optimized */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vh] h-[50vh] bg-shotz-yellow rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[60vh] h-[60vh] bg-shotz-green rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
+      {/* Decorative Blobs - Now with Parallax for smoothness */}
+      <motion.div 
+        style={{ y: yBlob1 }}
+        className="absolute top-[-10%] left-[-10%] w-[50vh] h-[50vh] bg-shotz-yellow rounded-full blur-[100px] opacity-60 pointer-events-none will-change-transform"
+      ></motion.div>
+      <motion.div 
+        style={{ y: yBlob2 }}
+        className="absolute bottom-[-10%] right-[-10%] w-[60vh] h-[60vh] bg-shotz-green rounded-full blur-[100px] opacity-60 pointer-events-none will-change-transform"
+      ></motion.div>
 
       {/* --- SMOOTH ANIMATED STARS --- */}
 
-      {/* 1. Big Star (Top Left) - Smooth continuous spin + subtle breathing */}
+      {/* 1. Big Star (Top Left) */}
       <motion.div 
-        className="absolute top-24 left-[5%] md:left-[12%] w-16 h-16 md:w-28 md:h-28 z-10 opacity-100 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)]"
+        className="absolute top-24 left-[5%] md:left-[12%] w-16 h-16 md:w-28 md:h-28 z-10 opacity-100 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)] will-change-transform"
         animate={{ 
           rotate: 360,
           scale: [1, 1.15, 1] 
@@ -42,9 +67,9 @@ const Hero: React.FC = () => {
         <StarSVG color="#FFFFFF" /> 
       </motion.div>
 
-      {/* 2. Star (Right Side) - Organic Floating + Slight Tilt */}
+      {/* 2. Star (Right Side) */}
       <motion.div 
-        className="absolute top-[35%] right-[5%] md:right-[15%] w-20 h-20 md:w-36 md:h-36 z-10 opacity-90 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)]"
+        className="absolute top-[35%] right-[5%] md:right-[15%] w-20 h-20 md:w-36 md:h-36 z-10 opacity-90 drop-shadow-[4px_4px_0_rgba(0,0,0,0.2)] will-change-transform"
         animate={{ 
           y: [-15, 15, -15],
           rotate: [-5, 5, -5]
@@ -57,9 +82,9 @@ const Hero: React.FC = () => {
         <StarSVG color="#FFFFFF" />
       </motion.div>
 
-      {/* 3. Tiny Sparkle (Near Center) - Quick Twinkle */}
+      {/* 3. Tiny Sparkle (Near Center) */}
       <motion.div 
-        className="absolute top-[28%] left-[25%] md:left-[30%] w-8 h-8 md:w-12 md:h-12 z-20"
+        className="absolute top-[28%] left-[25%] md:left-[30%] w-8 h-8 md:w-12 md:h-12 z-20 will-change-transform"
         animate={{ 
           scale: [0.8, 1.2, 0.8], 
           opacity: [0.6, 1, 0.6] 
@@ -112,7 +137,7 @@ const Hero: React.FC = () => {
 
         {/* The Trademark Mascot (Hero Subject) - Left and Small */}
         <motion.div 
-          style={{ rotate: rotateMascot }}
+          style={{ rotate: rotateMascot, y: yMascot }}
           className="absolute top-1/2 left-2 -translate-y-1/2 z-30 
            w-[120px] md:w-[320px] pointer-events-none will-change-transform"
         >
@@ -127,7 +152,7 @@ const Hero: React.FC = () => {
 
         {/* NEW Mascot - Right & Slightly Higher */}
         <motion.div 
-          style={{ rotate: rotateMascot }}
+          style={{ rotate: rotateMascot, y: yMascot }}
           className="absolute top-[40%] right-2 -translate-y-1/2 z-30 
                      w-[120px] md:w-[320px] pointer-events-none will-change-transform"
         >
