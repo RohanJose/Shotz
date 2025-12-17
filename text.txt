@@ -1,0 +1,42 @@
+Core Framework & Language
+React (v19): The library used for building the user interface.
+
+TypeScript: The programming language used (evident by the .tsx files and interface definitions), providing type safety.
+
+ES Modules & Import Maps: The site uses modern browser standards to load libraries directly from a CDN (esm.sh) without a traditional bundler (like Webpack or Vite) in this specific environment.
+
+Styling & Design
+Tailwind CSS: A utility-first CSS framework used for almost all styling (layout, colors, spacing). It is loaded via CDN with a custom configuration script to define the "SHOTZ" brand colors (shotz-lime, shotz-yellow, etc.) and fonts.
+
+Custom CSS: Specific styles injected via <style> tags for things Tailwind can't do easily, like the custom scrollbar, the infinite marquee animation keyframes, and the glitch effects.
+
+Google Fonts:
+
+Bangers: The loud, comic-book style display font.
+
+Permanent Marker: The handwritten brush font.
+
+Poppins: The clean sans-serif font for body text.
+
+Animation & Interaction
+Framer Motion: The heavy-lifting animation library used for:
+
+Scroll-triggered animations (Parallax effects on the hero section).
+
+Physics-based spring animations (The smooth floating stars).
+
+Page transitions and mobile menu entry/exit animations (AnimatePresence).
+
+Hover effects (scaling bottles, rotating elements).
+
+Assets & Icons
+Lucide React: The library used for the icons (Menu, X, Instagram, Droplet, etc.).
+
+SVG Graphics: Vector graphics used for the Logo, Mascots, and Stars to ensure they stay crisp at any size.
+
+Noise Texture: A background noise pattern (grainy-gradients.vercel.app) used to give the site a textured, retro feel.
+
+Browser APIs
+Intersection Observer: (Implicitly used by Framer Motion whileInView).
+
+Resize Observer: (Implicitly used by Framer Motion)
